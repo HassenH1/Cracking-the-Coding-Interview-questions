@@ -1,50 +1,47 @@
 //write an algo such that if an element in MxN matrix is 0, its entire row and column are set to 0
 
 function zeroMatrix(mat) {
+  let rowHash = {};
+  let colHash = {};
+
   for (let i = 0; i < mat.length; i++) {
     for (let j = 0; j < mat[i].length; j++) {
       if (mat[i][j] === 0) {
-        dfs(mat, i, j);
+        rowHash[i] = true;
+        colHash[j] = true;
       }
     }
   }
+
+  for (let i in rowHash) {
+    if (rowHash[i]) {
+      nullifyRow(mat, i);
+    }
+  }
+  for (let j in colHash) {
+    if (colHash[j]) {
+      nullifyCol(mat, j);
+    }
+  }
+  console.log(mat);
   return mat;
 }
 
-function dfs(mat, row, col) {
-  //bound check here
-  //
-  //bound check here
+function nullifyRow(mat, row) {
+  for (let i = 0; i < mat[0].length; i++) {
+    mat[row][i] = 0;
+  }
+}
 
-  mat[row][col] = 0;
-
-  let q = [];
-
-  q.push([row, col]);
-
-  while (q.length) {
-    let curr = q.shift();
-    let currRow = curr[0];
-    let currCol = curr[1];
-
-    if (mat[currRow - 1][currCol]) {
-      q.push([currRow - 1, currCol]);
-    }
-    if (mat[currRow + 1][currCol]) {
-      q.push([currRow + 1, currCol]);
-    }
-    if (mat[currRow][currCol - 1]) {
-      q.push([currRow, currCol - 1]);
-    }
-    if (mat[currRow][currCol + 1]) {
-      q.push([currRow, currCol + 1]);
-    }
+function nullifyCol(mat, col) {
+  for (let i = 0; i < mat.length; i++) {
+    mat[i][col] = 0;
   }
 }
 
 let matrix = [
   [1, 0, 3],
   [4, 5, 6],
-  [7, 8, 9],
+  [0, 8, 9],
 ];
-zeroMatrix(matrix);
+console.log(zeroMatrix(matrix));
