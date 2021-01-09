@@ -19,7 +19,8 @@ function stringCompression(str) {
   return newStr;
 }
 
-console.log(stringCompression("aabcccccaaa"));
+console.log(stringCompression("aabcccccaaa")); //a2b1c5a3
+console.log(stringCompression("azzzza")); //a1z4a1
 
 /*
 newStr = ""
