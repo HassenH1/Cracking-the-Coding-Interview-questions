@@ -34,14 +34,13 @@ class Linkedlist {
     //find the kth from last element
     let p1 = this.head;
     let p1Counter = 1;
-    let p2 = p1.next;
+    let p2 = this.head.next;
     let p2Counter = 2;
 
-    while (p2) {
-      if (p2 - p1 !== k) {
-        // 3 - 1 = 2
-        p2Counter++; // 2
-        p2 = p2.next; // next node
+    while (p2.next !== null) {
+      if (p2Counter - p1Counter !== k) {
+        p2Counter++;
+        p2 = p2.next;
       }
       p2 = p2.next;
       p1 = p1.next;
@@ -49,7 +48,6 @@ class Linkedlist {
     return p1;
   }
 }
-//             p1          p2
 let array = [12, 11, 12, 21, 41, 43, 21];
 let l = new Linkedlist();
 for (let i = 0; i < array.length; i++) {
