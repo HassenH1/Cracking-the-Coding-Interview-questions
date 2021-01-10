@@ -53,4 +53,4 @@ let l = new Linkedlist();
 for (let i = 0; i < array.length; i++) {
   l.append(array[i]);
 }
-console.log(l.kthtoLast(2));
+console.log(l.kthtoLast(3));
