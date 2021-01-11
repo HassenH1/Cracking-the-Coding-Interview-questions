@@ -4,3 +4,24 @@
 //Example
 //input a - b - c - d - e - c [the same c as eariler]
 //output : c
+
+class Node {
+  constructor(val) {
+    this.next = null;
+    this.prev = null;
+  }
+}
+class Linkedlist {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
+  append(val) {
+    let node = new Node(val);
+    if (this.head === null) {
+      this.head = this.tail = node;
+    }
+    this.tail.next = node;
+    this.tail = node;
+  }
+}
