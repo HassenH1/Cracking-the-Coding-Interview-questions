@@ -5,23 +5,19 @@
 //input a - b - c - d - e - c [the same c as eariler]
 //output : c
 
-class Node {
-  constructor(val) {
-    this.next = null;
-    this.prev = null;
+var hasCycle = function (head) {
+  if (head === null) {
+    return false;
   }
-}
-class Linkedlist {
-  constructor() {
-    this.head = null;
-    this.tail = null;
+
+  let slow = head;
+  let fast = head.next;
+
+  while (slow !== fast) {
+    if (fast == null || fast.next === null) return false;
+
+    slow = slow.next;
+    fast = fast.next.next;
   }
-  append(val) {
-    let node = new Node(val);
-    if (this.head === null) {
-      this.head = this.tail = node;
-    }
-    this.tail.next = node;
-    this.tail = node;
-  }
-}
+  return true;
+};
