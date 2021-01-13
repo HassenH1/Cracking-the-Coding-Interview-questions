@@ -25,8 +25,27 @@ class Stack {
 
 class SetOfStacks {
   constructor() {
+    this.arrayOfStack = [];
     this.limit = 4;
+    this.counter = 0;
+    this.stack = null;
   }
-  push(val) {}
-  pop() {}
+  push(val) {
+    if (this.counter === this.limit || this.counter === 0) {
+      this.counter = 0;
+      // this.stack = this.stack;
+      this.stack = new Stack();
+      this.arrayOfStack.push(this.stack);
+    }
+    this.stack.push(val);
+    this.counter++;
+  }
+  pop() {
+    if (this.counter === 1) {
+      this.counter = this.limit;
+    } else {
+      this.counter--;
+    }
+    return;
+  }
 }
