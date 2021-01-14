@@ -18,7 +18,7 @@ class BinarySearchTree {
     }
 
     const insert = (node) => {
-      let newNode = Node(val);
+      let newNode = new Node(val);
       if (node.val > val) {
         if (node.left) {
           insert(node.left);
@@ -35,10 +35,28 @@ class BinarySearchTree {
     };
     insert(this.root);
   }
+  isBalanced(node = this.root) {
+    return getHeight(node) !== -1; // 8 !== -1
+
+    function getHeight(node) {
+      if (!node) return 0;
+
+      let left = getHeight(node.left);
+      let right = getHeight(node.right);
+
+      if (left == -1 || right == -1 || Math.abs(left - right) > 1) {
+        return -1;
+      }
+
+      return 1 + Math.max(left, right);
+    }
+  }
 }
-let array = [8, 3, 10, 1, 6, 14, 4, 7, 13];
+// let array = [8, 3, 10, 1, 6, 14, 4, 7, 13];
+let array = [0, -3, 9, -10, null, 5];
 let b = new BinarySearchTree();
 for (let i of array) {
   b.append(i);
 }
-console.log(b);
+// console.log(b);
+console.log(b.isBalanced());
