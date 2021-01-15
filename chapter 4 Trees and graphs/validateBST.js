@@ -60,12 +60,38 @@ class BinaryTree {
       this.trav(node.right);
     }
   }
+  validateBST() {
+    let q = [];
+    q.push(this.root);
+
+    while (q.length) {
+      let curr = q.shift();
+
+      if (curr.left) {
+        if (curr.val > curr.left.val) {
+          q.push(curr.left);
+        } else {
+          return false;
+        }
+      }
+
+      if (curr.right) {
+        if (curr.val < curr.right.val) {
+          q.push(curr.right);
+        } else {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 }
 
 let array = [5, 14, 3, 1, 9];
 let b = new BinaryTree(2);
 for (let i of array) {
-  b.insert(i);
+  // b.insert(i);
+  b.bstAppend(i);
 }
 // console.log(b);
-b.trav();
+console.log(b.validateBST());
