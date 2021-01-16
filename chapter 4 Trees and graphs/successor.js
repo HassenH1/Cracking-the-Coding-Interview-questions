@@ -62,7 +62,7 @@ class BinarySearchTree {
     console.log("hello world");
   }
 }
-//2 1 3
+//2 1 3 -> p=1 output 2
 //5 3 6 2 4 1
 let b = new BinarySearchTree(2);
 b.append(1);
