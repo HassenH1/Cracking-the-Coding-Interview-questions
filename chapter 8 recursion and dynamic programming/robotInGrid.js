@@ -13,7 +13,7 @@
  *
  *
  */
-
+//optimized solution
 function robotInGrid(r, c, memo = {}) {
   let key = `${r},${c}`;
   if (key in memo) return memo[key];
@@ -26,3 +26,11 @@ function robotInGrid(r, c, memo = {}) {
 
 console.log(robotInGrid(3, 3));
 console.log(robotInGrid(18, 18));
+
+//unoptimized solution
+function robotInGrid(r, c) {
+  if (r === 1 && c === 1) return 1;
+  if (r === 0 || c === 0) return 0;
+
+  return robotInGrid(r - 1, c) + robotInGrid(r, c - 1);
+}
