@@ -14,11 +14,15 @@
  *
  */
 
-function robotInGrid(r, c) {
+function robotInGrid(r, c, memo = {}) {
+  let key = `${r},${c}`;
+  if (key in memo) return memo[key];
   if (r === 1 && c === 1) return 1;
   if (r === 0 || c === 0) return 0;
 
-  return robotInGrid(r - 1, c) + robotInGrid(r, c - 1);
+  memo[key] = robotInGrid(r - 1, c, memo) + robotInGrid(r, c - 1, memo);
+  return memo[key];
 }
 
 console.log(robotInGrid(3, 3));
+console.log(robotInGrid(18, 18));
