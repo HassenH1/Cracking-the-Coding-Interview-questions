@@ -15,14 +15,32 @@
  *
  */
 
-function staircase(num) {
+function staircase(num, memo = {}) {
+  if (num in memo) return memo[num];
   if (num < 0) {
     return 0;
   } else if (num === 0) {
     return 1;
   } else {
-    return staircase(num - 1) + staircase(num - 2) + staircase(num - 3);
+    memo[num] =
+      staircase(num - 1, memo) +
+      staircase(num - 2, memo) +
+      staircase(num - 3, memo);
+    return memo[num];
   }
 }
 
-console.log(staircase(3));
+console.log(staircase(50));
+
+//------------------------------>unoptimize
+// function staircase(num) {
+//   if (num < 0) {
+//     return 0;
+//   } else if (num === 0) {
+//     return 1;
+//   } else {
+//     return staircase(num - 1) + staircase(num - 2) + staircase(num - 3);
+//   }
+// }
+
+// console.log(staircase(100));
