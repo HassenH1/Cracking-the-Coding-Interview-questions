@@ -9,6 +9,8 @@
  *  magic index is 4 because i = 4 and a[4] = 4
  *
  *
+ *
+ *
  */
 
 function magicIndex(ray) {
