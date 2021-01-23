@@ -4,4 +4,20 @@
 
 /**
  *
+ *  [-1, 0, 1, 2, 4, 10]
+ *
+ *  magic index is 4 because i = 4 and a[4] = 4
+ *
+ *
  */
+
+function magicIndex(ray) {
+  for (let i = 0; i < ray.length; i++) {
+    if (i === ray[i]) {
+      return i;
+    }
+  }
+  return null;
+}
+let array = [-1, 0, 1, 2, 4, 10];
+console.log(magicIndex(array));
