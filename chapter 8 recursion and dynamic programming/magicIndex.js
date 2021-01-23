@@ -19,5 +19,25 @@ function magicIndex(ray) {
   }
   return null;
 }
+
+function magicIndexWithBinarySearchTree(ray, start, end) {
+  if (start <= end) {
+    let mid = Math.floor((start + end) / 2);
+
+    if (mid === ray[mid]) {
+      return mid;
+    }
+
+    if (mid > ray[mid]) {
+      return magicIndexWithBinarySearchTree(ray, mid + 1, end);
+    }
+    if (mid < ray[mid]) {
+      return magicIndexWithBinarySearchTree(ray, start, mid - 1);
+    }
+  }
+  return -1;
+}
+
 let array = [-1, 0, 1, 2, 4, 10];
-console.log(magicIndex(array));
+// console.log(magicIndex(array));
+console.log(magicIndexWithBinarySearchTree(array, 0, array.length));
