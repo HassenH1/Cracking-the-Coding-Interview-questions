@@ -1,6 +1,15 @@
 //Implement the "paint fill" function that one might see on many image eiditing programs. That is, given a screen (represented by a two-dimensopma; array of colors), a point, and a new color, fill in the surrounding area until the color changes from the original color
 
-function paintFill(screen, point, color) {}
+function paintFill(screen, point, color) {
+  var [row, col] = point;
+  var currColor = screen[row][col];
+  console.log(currColor, "<----currColor");
+  console.log("==============");
+  console.log(point, "<----point");
+  console.log("==============");
+  console.log([row, col], "<----row col");
+}
+
 var b = "#000000";
 var w = "#ffffff";
 var g = "#00ff00";
